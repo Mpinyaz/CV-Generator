@@ -1,0 +1,127 @@
+---
+name: Elton
+surname: Mpinyuri
+position: "Financial Administrator"
+address: "322 Pine Avenue, Ferndale, Randburg, Johannesburg, 2194"
+profilepic: "/Users/eltonmpinyuri/Documents/EB MPINYURI SELFIE.jpeg"
+email: "ebmpinyuri@gmail.com"
+github: Mpinyaz
+linkedin: eltonmpinyuri
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 990000
+aboutme: "I am a self-motivated individual who is inspired to enhance his professional skills to achieve organizational success. I am a critical thinker who thrives well in dynamic environments and adjusts well to complex situations. As a career driven, dedicated and flexible, I am looking for an opportunity within your organization to enhance my knowledge and practice as a graduate trainee specializing in Auditing. I am determined to make an influential role in the fields of commerce and finance. I have a growing interest in financial markets and global economic issues. I am eager and hopeful that I will be awarded the opportunity to experience the business environment and learn from the other professionals that I will meet. This will provide me an opportunity to learn and apply my risk management and finance proficiency professionally with the aim to work as a business analyst. In course of this opportunity, I will be able to grow, adapt and improvise my skills in this dynamic environment."
+docname: CV
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+require(xfun)
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data structure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative File Paths
+             ,'readr'     # Data Loading
+             ,'glue'      # String Manipulation
+            )
+xfun::pkg_attach2(packages, message = FALSE)
+
+```
+
+```{r}
+certifications <- tribble(
+  ~area, ~accomplishment, ~year, ~where, ~detail,
+  "Google Data Analytics Certificate", "Data Analytics", "2022", "Online - Coursera", NA,
+  "Perian Data", "Python for Financial Analysis and Algorithmic Trdaing", "2021", "Online - Udemy", NA,
+  "Learn Programming Academy", "Learn Python Programming Masterclass", "2020", "Online - Udemy", NA,
+  "Pyramid Learning", "Project Management in the Development Sector", "2020","Online - Pyramid learning", NA
+)
+
+skills <- tribble(
+  ~area, ~skills,
+  "Programming Languages", "BASH, JavaScript, Python, R, mySQL, PL-SQL, VBA",
+  "Markup Languages", "CSS, HTML, LaTeX, Markdown, RMarkdown, SASS",
+  "Data Interchange Formats", "CSV, JSON, XML",
+  "Version Control", "GIT",
+  "Text Editors", " Juypter Notebook, RStudio, VIM, Visual Studio, Visual Studio Code",
+  "Microsoft Office", "Excel, Outlook, OneNote, PowerPoint,  Word"
+)
+
+
+work <- tribble(
+  ~title, ~unit, ~startMonth, ~startYear, ~endMonth, ~endYear, ~where, ~detail,
+  "Financial Administrator", "Africa Centre of Evidence", "February", 2019, "Present", NA, "Johannesburg - Gauteng", "Facilitating the administrative procedures that sustain the research centre on day-to-day basis internal auditing of other entity divisions and substantiating their financial information on a monthly basis.",
+  "Financial Administrator", "Africa Centre of Evidence", "February", 2019, "Present", NA, "Johannesburg - Gauteng", "Preparation of financial reports by collecting, analysing and summarizing account information and reporting to the Director",
+  "Financial Administrator", "Africa Centre of Evidence", "February", 2019, "Present", NA, "Johannesburg - Gauteng", "Maintaining Account Controls by preparing and recommending policies and procedures",
+  "Financial Administrator", "Africa Centre of Evidence", "February", 2019, "Present", NA, "Johannesburg - Gauteng", "Create comprehensive reports on cashflows, funding income, expenses",
+  "Financial Intern", "Nexus SCM", "May", 2018, "December", "2018", "Johannesburg - Gauteng", "Preparing reports on the above information and communicating the insights, trends and patterns",
+  "Financial Intern", "Nexus SCM", "May", 2018, "December", "2018", "Johannesburg - Gauteng", "Provide for the proper evaluation, control, documentation and benefit tracking of special projects",
+)
+
+edu <- tribble(
+  ~degree, ~startYear, ~endYear, ~inst, ~where, ~detail,
+  "University of Johannesburg", 2016, 2019, "Masters of Commerce: Finance", "Johannesburg","Thesis: Beyond Cryptocurrencies- The Financial Application of Blockchain Technology",
+  "University of Johannesburg", 2015, 2015, "Bachelors of Commerce (Hons): Economics ", "Johannesburg", "Dissertation: Energy Demands in South Africa",
+  "University of Pretoria", 2010, 2014, "Bachelors of Commerce: Econometrics", "Tshwane", NA
+)
+
+
+
+```
+
+```
+
+# Employment
+
+```{r EMPLOYMENT}
+work %>%
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Education
+
+```{r EDUCATION}
+edu %>%
+  detailed_entries(
+    with = inst,
+    what = degree,
+    why = detail,
+    when = glue::glue("{startYear} --> {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Skills
+
+```{r SKILLS}
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+```
+
+
+
+
+# Certifications
+
+```{r CERTIFICATIONS}
+certifications %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
+
